@@ -1,10 +1,11 @@
-print("Укажите размер файла для скачивания:")
-size = int(input())
-print("Укажите скорость скачивания файла?")
-speed = int(input())
-download_size = 0
-download_time = 1
-while download_size <= size:
-    download_time += 1
-    download_size = speed * download_time
-    print(f"Прошло {download_time} сек. Скачано {download_size} из {size} Мб ({round((download_size / size) * 100)}%)")
+import time
+
+size = int(input("Укажите размер файла для скачивания: "))
+speed = int(input("Укажите скорость скачивания файла? "))
+time_counter = 1
+for mb in range(speed, size, speed):
+    print(f"Прошло {time_counter} сек. Скачано {mb} из {size} Мб ({round(100 * mb / size)}%)")
+    time_counter += 1
+    time.sleep(1)
+else:
+    print(f"Прошло {time_counter} сек. Скачано {size} из {size} Мб ({round(100 * size / size)}%)")
